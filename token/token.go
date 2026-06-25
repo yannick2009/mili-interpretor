@@ -18,11 +18,17 @@ const (
 	INTEGER TokenType = "INT"   // 12345678
 
 	// Operators
-	ASSIGN         TokenType = "=" // Assignation sign
-	PLUS           TokenType = "+" // Plus (+) sign
-	SUBTRACT       TokenType = "-" // Subtraction (-) sign
-	MULTIPLICATION TokenType = "*" // Multiplication (*) sign
-	DIVISION       TokenType = "/" // Division (/) sign
+	ASSIGN   TokenType = "=" // Assignation sign
+	PLUS     TokenType = "+" // Plus (+) sign
+	MINUS    TokenType = "-" // Subtraction (-) sign
+	BANG     TokenType = "!" // Exclamation
+	ASTERISk TokenType = "*" // Multiplication (*) sign
+	SLASH    TokenType = "/" // Slash
+
+	LT     TokenType = "<"
+	GT     TokenType = ">"
+	EQ     TokenType = "=="
+	NOT_EQ TokenType = "!="
 
 	// Delimiters
 	COMMA     TokenType = "," // comma
@@ -33,8 +39,13 @@ const (
 	RBRACE    TokenType = "}" // Right Brace
 
 	// Keywords
-	FUNCTION = "FUNCTION" // function
-	LET      = "LET"      // let for variable declaration
+	FUNCTION TokenType = "FUNCTION" // function Keyword
+	LET      TokenType = "LET"      // variable keyword
+	TRUE     TokenType = "TRUE"     // true keyword
+	FALSE    TokenType = "FALSE"    // false keyword
+	IF       TokenType = "IF"       // if condition keyword
+	ELSE     TokenType = "ELSE"     // else keyword
+	RETURN   TokenType = "RETURN"   // function return keyword
 )
 
 // search the right keyword for the input
@@ -46,7 +57,13 @@ func LookupIdent(input string) TokenType {
 	return IDENT
 }
 
+// keywords mapping
 var keywords = map[string]TokenType{
-	"let": LET,
-	"fn":  FUNCTION,
+	"let":    LET,
+	"fn":     FUNCTION,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
+	"return": RETURN,
 }
